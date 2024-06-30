@@ -25,17 +25,47 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-        pip install 'dvc'
+
+      # --- Check out code and setup Python
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # --- Install Poetry
+
+      - name: Load cached $HOME/.local
+        uses: actions/cache@v3
+        with:
+          path: ~/.local
+          key: ${{ github.repository }}-${{ github.workflow }}-${{ github.job }}-dotlocal-${{ runner.os }}-${{ runner.arch }}-${{ matrix.python-version }}-${{ hashFiles('.github/workflows/CI.yml') }}
+
+      - name: Install Python poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      # --- Install package dependencies
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: ${{ github.repository }}-${{ github.workflow }}-${{ github.job }}-venv-${{ runner.os }}-${{ runner.arch }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install package dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --with test
+
+    # --- Run tests
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -47,11 +77,14 @@ jobs:
         count=$(echo "$OUTPUT" | tail -1)
         # Fail test explicitly if count >= 10
         if [[ $count -ge 10 ]]; then exit $count; fi
+
     - name: Setup env for tests
       run: |
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
-    - name: Test with pytest
+
+    - name: Run tests
       run: |
+        source $VENV
         export MAX_THRESHOLD_SIZE=10240
-        pytest
+        poetry run pytest --cov-report=xml
