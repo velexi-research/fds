@@ -69,7 +69,7 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          CODE_DIRS=fds tests bin
+          CODE_DIRS="fds tests bin"
           # stop the build if there are Python syntax errors or undefined names
           poetry run flake8 $CODE_DIRS --count --select=E9,F63,F7,F82 --show-source --statistics
           # The GitHub editor is 127 chars wide and save output to variable
