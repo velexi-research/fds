@@ -24,8 +24,6 @@ repos:
   - id: poetry-lock
   - id: poetry-export
     args: ["-f", "requirements.txt"]
-    verbose: true
   - id: poetry-export
     args: ["--dev", "-f", "requirements.txt", "-o", "requirements-dev.txt"]
-    verbose: true
-files: (fds/|tests/)
+files: (fds/|tests/|poetry.lock)
