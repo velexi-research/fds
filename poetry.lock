@@ -981,13 +981,13 @@ tests = ["dvc-render[markdown,table]", "pytest (>=7,<9)", "pytest-cov (>=4.1.0)"
 
 [[package]]
 name = "dvc-studio-client"
-version = "0.20.0"
+version = "0.21.0"
 description = "Small library to post data from DVC/DVCLive to Iterative Studio"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "dvc-studio-client-0.20.0.tar.gz", hash = "sha256:a242e9c46297c689d65ff28d439b7c2e7535b641f09860f871b5628f7ae4bc42"},
-    {file = "dvc_studio_client-0.20.0-py3-none-any.whl", hash = "sha256:b9ee7c419a799ecdaeaf872114e6d664be1584822473fdf8aff43c961a3e2aa3"},
+    {file = "dvc_studio_client-0.21.0-py3-none-any.whl", hash = "sha256:93006e3812c830b42ff79746e6c6163e97a3c3ead6722ec2f1dec1d7dbf0b071"},
+    {file = "dvc_studio_client-0.21.0.tar.gz", hash = "sha256:db212ff5cf73dce886d0713a5d2bf4bc0bbfb499f3ca8548705ca98aab5addd1"},
 ]
 
 [package.dependencies]
@@ -996,9 +996,9 @@ requests = "*"
 voluptuous = "*"
 
 [package.extras]
-dev = ["dvc-studio-client[docs]", "dvc-studio-client[tests]", "types-requests"]
-docs = ["mkdocs (==1.5.3)", "mkdocs-gen-files (==0.5.0)", "mkdocs-material (==9.5.8)", "mkdocs-section-index (==0.3.8)", "mkdocstrings-python (==1.8.0)"]
-tests = ["mypy (==1.8.0)", "pytest (==8.0.0)", "pytest-cov (==4.1.0)", "pytest-mock (==3.12.0)", "pytest-sugar (==1.0.0)"]
+dev = ["dvc-studio-client[docs,tests]", "mypy (==1.10.1)", "types-requests"]
+docs = ["mkdocs (>=1.5.2,<2)", "mkdocs-gen-files (>=0.5.0,<1)", "mkdocs-material (>=9.3.1,<10)", "mkdocs-section-index (>=0.3.6,<1)", "mkdocstrings-python (>=1.6.3,<2)"]
+tests = ["pytest (>=7,<9)", "pytest-cov (>=4.1.0)", "pytest-mock", "pytest-sugar"]
 
 [[package]]
 name = "dvc-task"
@@ -1211,13 +1211,13 @@ files = [
 
 [[package]]
 name = "fsspec"
-version = "2024.6.0"
+version = "2024.6.1"
 description = "File-system specification"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fsspec-2024.6.0-py3-none-any.whl", hash = "sha256:58d7122eb8a1a46f7f13453187bfea4972d66bf01618d37366521b1998034cee"},
-    {file = "fsspec-2024.6.0.tar.gz", hash = "sha256:f579960a56e6d8038a9efc8f9c77279ec12e6299aa86b0769a7e9c46b94527c2"},
+    {file = "fsspec-2024.6.1-py3-none-any.whl", hash = "sha256:3cb443f8bcd2efb31295a5b9fdb02aee81d8452c80d28f97a6d0959e6cee101e"},
+    {file = "fsspec-2024.6.1.tar.gz", hash = "sha256:fad7d7e209dd4c1208e3bbfda706620e0da5142bebbd9c384afb95b07e798e49"},
 ]
 
 [package.dependencies]
@@ -2706,13 +2706,12 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "voluptuous"
-version = "0.15.0"
+version = "0.15.1"
 description = "Python data validation library"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "voluptuous-0.15.0-py3-none-any.whl", hash = "sha256:ab8d0c3b74b83d062b72fde6ed120b9801d7acb7e504666b0f278dd214ae7ce5"},
-    {file = "voluptuous-0.15.0.tar.gz", hash = "sha256:90fb449f6088f3985b24c0df79887e3823355639e0a6a220394ceac07258aea0"},
+    {file = "voluptuous-0.15.1.tar.gz", hash = "sha256:4ba7f38f624379ecd02666e87e99cb24b6f5997a28258d3302c761d1a2c35d00"},
 ]
 
 [[package]]
