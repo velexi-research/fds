@@ -226,7 +226,7 @@ class TestFdsHooks:
             return
 
         assert mock_sys_exit.call_count == 1
-        assert 0 not in mock_sys_exit.called_with
+        assert unittest.mock.call(0) not in mock_sys_exit.mock_calls
 
     @pytest.mark.parametrize("is_latest", BOOLS)
     @pytest.mark.parametrize("install_prompt_accept", BOOLS)
@@ -344,4 +344,4 @@ class TestFdsHooks:
             if raise_on_reject:
                 assert mock_sys_exit.call_count == 1
             else:
-                assert 0 not in mock_sys_exit.called_with
+                assert unittest.mock.call(0) not in mock_sys_exit.mock_calls
