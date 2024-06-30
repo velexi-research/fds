@@ -9,5 +9,6 @@ FastDS Release Notes
 * Update Makefile to use `lint` target to run flake8 checks during unit tests.
 * Update package dependencies.
   * Remove pytest-flake8 dependency.
+* Update unit tests to be compatible with recent versions of Python.
 
 -------------------------------------------------------------------------------
