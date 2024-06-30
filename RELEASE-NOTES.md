@@ -2,7 +2,7 @@ FastDS Release Notes
 ===============================================================================
 
 -------------------------------------------------------------------------------
-0.6.2 (2024-06-25)
+0.6.2 (2024-06-30)
 ==================
 * Add `[tool.poetry.scripts]` section to `pyproject.toml`.
 * Add `fds` and `sdf` executables for use during development.
