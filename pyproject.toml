@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fds"
-version = "0.6.3"
+version = "0.6.4"
 description = "Fast Data Science, AKA fds, is a CLI for Data Scientists to version control data and code at once, by conveniently wrapping git and dvc"
 authors = []
 license = "MIT"
