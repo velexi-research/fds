@@ -1,1 +1,15 @@
-fds
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# --- Imports
+
+# Standard library
+import sys
+
+# Internal modules
+from fds.cli import main
+
+# --- Run main program
+
+if __name__ == "__main__":
+    sys.exit(main())
